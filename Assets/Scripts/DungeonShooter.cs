@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
@@ -10,13 +11,41 @@ namespace DungeonCrawler
         public GameObject prefab;
         public Transform spawnPoint;
 
+        private Animator _animator;
+
+        private void Start()
+        {
+            _animator = GetComponentInChildren<Animator>();
+        }
+
         void Update()
         {
             if (!isLocalPlayer) return;
             if (Input.GetButtonDown("Fire1"))
             {
-                CmdFire();
+                CmdStartFireSequence();
             }
+        }
+
+        [Command]
+        void CmdStartFireSequence()
+        {
+            RpcOnFireStarted();
+        }
+
+        [ClientRpc]
+        void RpcOnFireStarted()
+        {
+            if (_animator != null)
+            {
+                _animator.SetTrigger("Shoot");
+            }
+        }
+
+        public void Fire()
+        {
+            if (!isLocalPlayer) return;
+            CmdFire();
         }
 
         [Command]
@@ -24,13 +53,6 @@ namespace DungeonCrawler
         {
             var go = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
             NetworkServer.Spawn(go);
-            RpcOnBulletFired();
-        }
-
-        [ClientRpc]
-        void RpcOnBulletFired()
-        {
-            Debug.Log("Fired");
         }
     }
 }

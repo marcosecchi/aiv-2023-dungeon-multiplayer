@@ -9,6 +9,8 @@ namespace DungeonCrawler
     public class DungeonPlayerController : NetworkBehaviour
     {
         private CharacterController _controller;
+        private Animator _animator;
+        
         public float moveSpeed = 3;
         public float rotationSpeed = 1;
         public GameObject marker;
@@ -16,6 +18,7 @@ namespace DungeonCrawler
         void Start()
         {
             _controller = GetComponent<CharacterController>();
+            _animator = GetComponentInChildren<Animator>();
         }
 
         void Update()
@@ -30,6 +33,11 @@ namespace DungeonCrawler
     
             transform.Rotate(Vector3.up * (hMove * rotationSpeed));
             _controller.SimpleMove(tr.forward * (vMove * moveSpeed));
+
+            if (_animator != null)
+            {
+                _animator.SetFloat("Speed", _controller.velocity.magnitude);
+            }
         }
     }
 }
