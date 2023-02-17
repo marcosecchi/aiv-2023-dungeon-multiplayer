@@ -97,6 +97,37 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3623398981799064691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2431674538898683660}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2431674538898683660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3623398981799064691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.35, y: 0.46, z: 0.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5186807618673050330}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5186807618673050334
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +140,7 @@ GameObject:
   - component: {fileID: 5186807618673050329}
   - component: {fileID: 5186807618673050328}
   - component: {fileID: 5186807618673050335}
+  - component: {fileID: 3766990598407773303}
   - component: {fileID: 7972000617671420602}
   m_Layer: 0
   m_Name: Player
@@ -131,6 +163,7 @@ Transform:
   m_Children:
   - {fileID: 4643641611294431647}
   - {fileID: 1040759050771288273}
+  - {fileID: 2431674538898683660}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -187,7 +220,23 @@ MonoBehaviour:
   moveSpeed: 3
   rotationSpeed: 1
   marker: {fileID: 1604959954962264293}
-  mat: {fileID: 2100000, guid: bdbff49045924e14ab053a5f42b20535, type: 2}
+--- !u!114 &3766990598407773303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5186807618673050334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512f54add500d7047b1a52edffc74bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  prefab: {fileID: 1320957663024476991, guid: 70ab30df71f4b3b4780fb6801adb6ae3, type: 3}
+  spawnPoint: {fileID: 2431674538898683660}
 --- !u!114 &7972000617671420602
 MonoBehaviour:
   m_ObjectHideFlags: 0

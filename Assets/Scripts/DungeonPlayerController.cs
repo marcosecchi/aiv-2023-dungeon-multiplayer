@@ -22,17 +22,14 @@ namespace DungeonCrawler
         {
             marker.SetActive(isLocalPlayer);
 
-            if (isLocalPlayer)
-            {
-                var vMove = Input.GetAxis("Vertical");
-                vMove = Mathf.Clamp(vMove, 0, 1);
-                var hMove = Input.GetAxis("Horizontal");
-                var tr = transform;
-        
-                transform.Rotate(Vector3.up * (hMove * rotationSpeed));
-                _controller.SimpleMove(tr.forward * (vMove * moveSpeed));
-            }
-
+            if (!isLocalPlayer) return;
+            var vMove = Input.GetAxis("Vertical");
+            vMove = Mathf.Clamp(vMove, 0, 1);
+            var hMove = Input.GetAxis("Horizontal");
+            var tr = transform;
+    
+            transform.Rotate(Vector3.up * (hMove * rotationSpeed));
+            _controller.SimpleMove(tr.forward * (vMove * moveSpeed));
         }
     }
 }
