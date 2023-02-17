@@ -42,6 +42,14 @@ namespace DungeonCrawler
             {
                 StartCoroutine(nameof(FindPlayer));
             }
+            else
+            {
+                var hMove = Input.GetAxis("Horizontal");
+                var vMove = Input.GetAxis("Vertical");
+                
+                transform.Rotate(hMove * 3 * Vector3.up);
+                transform.Translate(vMove * 10 * transform.forward);
+            }
 
         }
     }

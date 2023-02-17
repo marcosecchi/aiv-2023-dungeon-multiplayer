@@ -15,9 +15,22 @@ namespace DungeonCrawler
             if (!isLocalPlayer) return;
             if (Input.GetButtonDown("Fire1"))
             {
-                var go = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
-                NetworkServer.Spawn(go);
+                CmdFire();
             }
+        }
+
+        [Command]
+        void CmdFire()
+        {
+            var go = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+            NetworkServer.Spawn(go);
+            RpcOnBulletFired();
+        }
+
+        [ClientRpc]
+        void RpcOnBulletFired()
+        {
+            Debug.Log("Fired");
         }
     }
 }
