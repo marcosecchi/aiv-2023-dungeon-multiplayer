@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 5186807618673050328}
   - component: {fileID: 5186807618673050335}
   - component: {fileID: 3766990598407773303}
+  - component: {fileID: 4661699235938035947}
   - component: {fileID: 7972000617671420602}
   m_Layer: 0
   m_Name: Player
@@ -220,6 +221,7 @@ MonoBehaviour:
   moveSpeed: 3
   rotationSpeed: 1
   marker: {fileID: 1604959954962264293}
+  colorIndex: -1
 --- !u!114 &3766990598407773303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +239,25 @@ MonoBehaviour:
   syncInterval: 0.1
   prefab: {fileID: 1320957663024476991, guid: 70ab30df71f4b3b4780fb6801adb6ae3, type: 3}
   spawnPoint: {fileID: 2431674538898683660}
+  inputName: Fire1
+--- !u!114 &4661699235938035947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5186807618673050334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512f54add500d7047b1a52edffc74bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  prefab: {fileID: 1320957663024476991, guid: 2498c1dbdcfe6c14f825e7e94d20e1e5, type: 3}
+  spawnPoint: {fileID: 2431674538898683660}
+  inputName: Fire2
 --- !u!114 &7972000617671420602
 MonoBehaviour:
   m_ObjectHideFlags: 0

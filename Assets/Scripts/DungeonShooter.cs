@@ -13,6 +13,8 @@ namespace DungeonCrawler
 
         private Animator _animator;
 
+        public string inputName = "Fire1";
+
         private void Start()
         {
             _animator = GetComponentInChildren<Animator>();
@@ -21,7 +23,7 @@ namespace DungeonCrawler
         void Update()
         {
             if (!isLocalPlayer) return;
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown(inputName))
             {
                 CmdStartFireSequence();
             }

@@ -29,7 +29,8 @@ namespace DungeonCrawler
             base.OnStartServer();
             
             colorIndex = NetworkServer.connections.Count - 1 ;
-            OnColorChanged(0, 0);
+            if(isServer)
+                OnColorChanged(0, 0);
         }
 
         void OnColorChanged(int _, int newValue)

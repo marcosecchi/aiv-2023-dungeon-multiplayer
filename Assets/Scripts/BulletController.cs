@@ -32,8 +32,12 @@ namespace DungeonCrawler
         private void OnCollisionEnter(Collision collision)
         {
             Debug.Log("Collision with " + collision.gameObject.name);
-            // Make some damage
-            
+
+            var player = collision.gameObject.GetComponent<DungeonPlayerController>();
+            if (player != null)
+            {
+                NetworkServer.Destroy(collision.gameObject);
+            }
             SelfDestroy();
         }
     }
