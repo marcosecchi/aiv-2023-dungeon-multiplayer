@@ -15,12 +15,41 @@ namespace DungeonCrawler
         public float rotationSpeed = 1;
         public GameObject marker;
 
+        [SyncVar(hook = nameof(OnColorChanged))]
+        public int colorIndex = -1;
+
         void Start()
         {
             _controller = GetComponent<CharacterController>();
             _animator = GetComponentInChildren<Animator>();
         }
 
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            
+            CmdInitPlayer();            
+        }
+
+        [Command]
+        void CmdInitPlayer()
+        {
+            colorIndex = NetworkServer.connections.Count - 1 ;
+        }
+
+        void OnColorChanged(int _, int newValue)
+        {
+            var mat = Resources.Load<Material>("Materials/Mat_" + newValue);
+            var rend = GetComponentsInChildren<Renderer>();
+            if (mat != null)
+            {
+                foreach (var r in rend)
+                {
+                    r.material = mat;
+                }
+            }
+        }
+        
         void Update()
         {
             marker.SetActive(isLocalPlayer);
