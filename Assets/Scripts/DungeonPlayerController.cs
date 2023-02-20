@@ -24,17 +24,12 @@ namespace DungeonCrawler
             _animator = GetComponentInChildren<Animator>();
         }
 
-        public override void OnStartClient()
+        public override void OnStartServer()
         {
-            base.OnStartClient();
+            base.OnStartServer();
             
-            CmdInitPlayer();            
-        }
-
-        [Command]
-        void CmdInitPlayer()
-        {
             colorIndex = NetworkServer.connections.Count - 1 ;
+            OnColorChanged(0, 0);
         }
 
         void OnColorChanged(int _, int newValue)
