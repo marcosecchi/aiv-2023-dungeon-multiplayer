@@ -24,12 +24,14 @@ namespace DungeonCrawler
         [Server]
         void SelfDestroy()
         {
+            Debug.Log("Self Destroy");
             NetworkServer.Destroy(gameObject);
         }
 
         [ServerCallback]
         private void OnCollisionEnter(Collision collision)
         {
+            Debug.Log("Collision with " + collision.gameObject.name);
             // Make some damage
             
             SelfDestroy();
