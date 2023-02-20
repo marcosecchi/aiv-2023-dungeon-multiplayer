@@ -29,7 +29,7 @@ namespace DungeonCrawler
             base.OnStartServer();
             
             colorIndex = NetworkServer.connections.Count - 1 ;
-            if(isServer)
+            if(isServer && isLocalPlayer)
                 OnColorChanged(0, 0);
         }
 
